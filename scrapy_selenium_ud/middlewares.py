@@ -6,7 +6,7 @@ from scrapy import signals
 from scrapy.exceptions import NotConfigured
 from scrapy.http import HtmlResponse
 import undetected_chromedriver as uc
-uc.install()
+
 from selenium.webdriver import Chrome
 from selenium.webdriver import ChromeOptions
 from selenium.common.exceptions import TimeoutException, WebDriverException
@@ -80,10 +80,11 @@ class SeleniumUcMiddleware:
     def from_crawler(cls, crawler):
         """Initialize the middleware with the crawler settings"""
 
-        options = ChromeOptions()
-        options.add_argument('--headless')
-        options.page_load_strategy = 'none'
-        driver = uc.Chrome(options=options)
+        # options = ChromeOptions()
+        # options.add_argument('--headless')
+        # options.page_load_strategy = 'none'
+        # driver = uc.Chrome(options=options)
+        driver = uc.Chrome()
 
         middleware = cls(
             # options=options,
